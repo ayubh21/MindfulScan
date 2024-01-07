@@ -7,8 +7,10 @@ export default function Navbar() {
   const theme = useAtomValue(themeAtom);
 
   return (
-    <div className="logo">
-      <img src={theme == "dark" ? logoDark : logoLight} alt="Blog Logo" />
-    </div>
+    <header>
+      <div className="logo">
+        <img src={theme == "dark" ? logoDark : logoLight} alt="Blog Logo" />
+      </div>
+    </header>
   );
 }
