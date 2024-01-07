@@ -40,17 +40,21 @@ func main() {
 		var payload PromptRequest
 
 		if err := c.BodyParser(&payload); err != nil {
+			fmt.Println(err)
 			return err
 		}
 
+		fmt.Println("Sending prompt to ChatGPT:", payload.Prompt)
 		resp, err := client.SendPrompt(c.Context(), payload.Prompt)
 		if err != nil {
+			fmt.Println(err)
 			return err
 		}
 
 		speechResponse := SpeechResponse{}
 		err = json.Unmarshal([]byte(resp.Choices[0].Message.Content), &speechResponse)
 		if err != nil {
+			fmt.Println(err)
 			return err
 		}
 
@@ -79,8 +83,8 @@ func main() {
 			return c.Status(400).JSON(jsonString)
 		}
 
-		startIndex := (i - 1) * 15 // items per page
-		endIndex := i * 15
+		startIndex := (i - 1) * 200 // items per page
+		endIndex := i * 200
 
 		if endIndex > len(fakeData) {
 			endIndex = len(fakeData)

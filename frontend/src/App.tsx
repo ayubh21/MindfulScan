@@ -3,7 +3,7 @@ import "./App.css";
 import { ModeToggle } from "./components/mode-toggle";
 import TableData from "./app/page";
 import { Button } from "@/components/ui/button";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
@@ -11,18 +11,20 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <div className="header" style={{ display: "flex", justifyContent: "space-between", alignItems: "end" }}>
+        <div
+          className="header"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "end",
+          }}
+        >
           <Navbar />
-          <ModeToggle/>
+          <ModeToggle />
         </div>
-          <div>
-            <Button
-              variant="outline"
-            >
-              Generate Tweet
-            </Button>
-            <TableData />
-          </div>
+        <div>
+          <TableData />
+        </div>
       </ThemeProvider>
     </QueryClientProvider>
   );

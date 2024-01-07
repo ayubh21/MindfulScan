@@ -18,12 +18,28 @@ type FakeData struct {
 }
 
 func NewFakeData(tweet string) FakeData {
-	formattedTweet := strings.Replace(tweet, "&#128514;", "", -1)
-	finalTweet := strings.Replace(formattedTweet, "\\\"", "", -1)
-	fTweet := strings.Replace(finalTweet, "&#8220;", "", -1)
+	cleanTweet := removeUnicode(tweet)
+	wordsToReplace := []string{
+		"&#128064;",
+		"&#128565;",
+		"&#128588;",
+		"&#9995;",
+		"&#128553;",
+		"&#8221;",
+		"&#128175;",
+		"&#128514;",
+		"\\\"",
+		"&#8220;",
+	}
+
+	var formattedTweet string = cleanTweet
+	for _, word := range wordsToReplace {
+		formattedTweet = strings.Replace(formattedTweet, word, "", -1)
+	}
+
 	return FakeData{
 		Id:         uuid.NewString(),
-		Tweet:      fTweet,
+		Tweet:      formattedTweet,
 		Name:       gofakeit.Name(),
 		ProfilePic: "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png",
 	}

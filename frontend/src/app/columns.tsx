@@ -1,22 +1,21 @@
-"use client"
+"use client";
 
-import { Tweet } from "@/types/tweet"
-import { ColumnDef } from "@tanstack/react-table"
-
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
+import { Tweet } from "@/types/tweet";
+import { ColumnDef } from "@tanstack/react-table";
 
 export const columns: ColumnDef<Tweet>[] = [
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "name",
+    header: () => <div style={{ textAlign: "left" }}>Name</div>,
+    // header: "Name",
   },
   {
-    accessorKey: "email",
-    header: "Email",
+    accessorKey: "tweet",
+    header: () => <div style={{ textAlign: "left" }}>Tweet</div>,
+    // header: "Tweet",
   },
-  {
-    accessorKey: "amount",
-    header: "Amount",
-  },
-]
+  // {
+  //   accessorKey: "amount",
+  //   header: "Amount",
+  // },
+];
