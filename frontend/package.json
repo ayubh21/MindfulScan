@@ -1,0 +1,15 @@
+{
+  "name": "mindfulscan-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for MindfulScan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/ayubh21/MindfulScan"
+  },
+  "author": "OutOfTime",
+  "license": "ISC"
+}
