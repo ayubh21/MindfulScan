@@ -3,4 +3,5 @@ export type Tweet = {
   tweet: string;
   name: string;
   profile_pic: string;
+  tweet_uncensored: string;
 };

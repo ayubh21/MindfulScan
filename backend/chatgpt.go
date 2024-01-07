@@ -10,11 +10,12 @@ import (
 )
 
 const SystemPropmt = `
-Determine if the following message contains hate speech or offensive language. We understand that
+Determine if the following message contains hate speech, offensive language or misinformation. We understand that
 there is hate speech if it has statements of an intense and irrational nature of rejection, enmity and abhorrence against an individual or against a group, being the targets of these expressions for possessing a protected characteristic. The protected characteristics that we consider are: 
-• women: women or feminist movement
-• lgbti: against gays, lesbians, trans-sexuals and other gender identities
-• racism: immigrants, xenophobia, against aboriginal peoples
+• Degrading: women or feminist movement
+• LGBTI: against gays, lesbians, trans-sexuals and other gender identities
+• Racism: immigrants, xenophobia, against aboriginal peoples
+• Misinformation: wrong information 
 
 Answer one or more of the characteristics separated by a comma, or "neutral" if there is no hate speech. In a few words, explain your decision.
 Think step by step before answering.

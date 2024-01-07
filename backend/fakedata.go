@@ -2,19 +2,26 @@ package main
 
 import (
 	"encoding/csv"
+	"fmt"
 	"math/rand"
 	"os"
 	"strings"
 
 	"github.com/brianvoe/gofakeit/v6"
 	"github.com/google/uuid"
+	"github.com/pcpratheesh/go-censorword"
+)
+
+var detector = gocensorword.NewDetector(
+	gocensorword.WithCensorReplaceChar("*"),
 )
 
 type FakeData struct {
-	Id         string `json:"id"`
-	Tweet      string `json:"tweet"`
-	Name       string `json:"name"`
-	ProfilePic string `json:"profile_pic"`
+	Id              string `json:"id"`
+	Tweet           string `json:"tweet"`
+	UncensoredTweet string `json:"tweet_uncensored"`
+	Name            string `json:"name"`
+	ProfilePic      string `json:"profile_pic"`
 }
 
 func NewFakeData(tweet string) FakeData {
@@ -37,11 +44,17 @@ func NewFakeData(tweet string) FakeData {
 		formattedTweet = strings.Replace(formattedTweet, word, "", -1)
 	}
 
+	filterString, err := detector.CensorWord(formattedTweet)
+	if err != nil {
+		fmt.Println(err)
+	}
+
 	return FakeData{
-		Id:         uuid.NewString(),
-		Tweet:      formattedTweet,
-		Name:       gofakeit.Name(),
-		ProfilePic: "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png",
+		Id:              uuid.NewString(),
+		Tweet:           filterString,
+		UncensoredTweet: formattedTweet,
+		Name:            gofakeit.Name(),
+		ProfilePic:      "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png",
 	}
 }
 

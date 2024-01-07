@@ -76,7 +76,7 @@ export function DataTable<TData, TValue>({
               <TableCell>
                 <FlagInfo
                   id={row.original["id"]}
-                  prompt={row.original["tweet"]}
+                  prompt={row.original["tweet_uncensored"]}
                 />
               </TableCell>
               {/* <TableCell>{<Flag id="" prompt="" />}</TableCell> */}

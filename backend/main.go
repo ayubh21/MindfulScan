@@ -51,6 +51,11 @@ func main() {
 			return err
 		}
 
+		if len(resp.Choices) == 0 {
+			fmt.Println("Most likely out of balance")
+			return fmt.Errorf("error sending request to chatgpt")
+		}
+
 		speechResponse := SpeechResponse{}
 		err = json.Unmarshal([]byte(resp.Choices[0].Message.Content), &speechResponse)
 		if err != nil {
