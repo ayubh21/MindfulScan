@@ -1,26 +1,31 @@
 import { ThemeProvider } from "./components/theme-provider";
 import "./App.css";
 import { ModeToggle } from "./components/mode-toggle";
-import Navbar from "./components/navbar";
 import TableData from "./app/page";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import Navbar from "./components/Navbar";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-
- function App() {
+function App() {
+  const queryClient = new QueryClient();
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div>
-        <Navbar />
-        <ModeToggle />
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <div>
-        <Button style={
-        {display: "flex", justifyContent: "center"}
-        } 
-        variant="outline">Generate Tweet</Button>
-        <TableData/>
+          <Navbar />
+          <ModeToggle />
+          <div>
+            <Button
+              style={{ display: "flex", justifyContent: "center" }}
+              variant="outline"
+            >
+              Generate Tweet
+            </Button>
+            <TableData />
+          </div>
         </div>
-      </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 

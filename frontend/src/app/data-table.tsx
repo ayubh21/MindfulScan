@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 
 import {
   Table,
@@ -14,11 +14,15 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
+import { useQuery } from "react-query";
+import { getFakeData } from "@/api/fakedata";
+import { useAtomValue } from "jotai";
+import { pageAtom } from "@/atoms/pagination";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
 }
 
 export function DataTable<TData, TValue>({
@@ -29,7 +33,17 @@ export function DataTable<TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-  })
+  });
+
+  const currentPage = useAtomValue(pageAtom);
+  const tweetsQuery = useQuery({
+    queryKey: ["tweets", currentPage],
+    queryFn: () => getFakeData(currentPage),
+  });
+
+  if (tweetsQuery.isLoading) return <h1>Loading...</h1>;
+  if (tweetsQuery.isError)
+    return <pre>{JSON.stringify(tweetsQuery.error)}</pre>;
 
   return (
     <div className="rounded-md border">
@@ -44,10 +58,10 @@ export function DataTable<TData, TValue>({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                   </TableHead>
-                )
+                );
               })}
             </TableRow>
           ))}
@@ -76,5 +90,5 @@ export function DataTable<TData, TValue>({
         </TableBody>
       </Table>
     </div>
-  )
+  );
 }
