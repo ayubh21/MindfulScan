@@ -14,11 +14,18 @@ there is hate speech if it has statements of an intense and irrational nature of
 • lgbti: against gays, lesbians, trans-sexuals and other gender identities
 • racism: immigrants, xenophobia, against aboriginal peoples • class: low-income people or class reasons.
 
-Answer one or more of the characteristics separated by a comma, or "nothing" if there is no hate speech. Think step by step before answering.
+Answer one or more of the characteristics separated by a comma, or "nothing" if there is no hate speech. In a few words, explain your decision.
+Think step by step before answering.
+Please respond in this json format {"speech_type": "", "explanation": ""}
 `
 
 type GptClient struct {
 	*openai.Client
+}
+
+type SpeechResponse struct {
+	SpeechType   string `json:"speech_type"`
+	Explanatiion string `json:"explanation"`
 }
 
 func NewGptClient(apiKey string) *GptClient {
