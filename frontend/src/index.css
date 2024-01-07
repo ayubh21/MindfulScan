@@ -85,3 +85,7 @@ header {
     @apply bg-background text-foreground;
   }
 }
+
+.header {
+  margin-top: 5rem;
+}

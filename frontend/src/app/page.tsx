@@ -1,29 +1,28 @@
-import { Payment, columns } from "./columns"
+import { Tweet } from "@/types/tweet"
+import {columns } from "./columns"
 import { DataTable } from "./data-table"
 import { useEffect, useState } from "react"
-
-async function getData(): Promise<Payment[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    // ...
-  ]
-}
+import { useAtomValue } from "jotai"
+import { pageAtom } from "@/atoms/pagination"
+import { useQuery } from "react-query"
+import { getFakeData } from "@/api/fakedata"
 
 export default  function TableData() {
-  const [data, setData] = useState<Payment[]>([])
+    const currentPage = useAtomValue(pageAtom);
+    const tweetsQuery = useQuery({
+      queryKey: ["tweets", currentPage],initialData:[],
+      queryFn: () => getFakeData(currentPage),
+    });
   
-  useEffect(()=> {
-    getData().then(payment=> setData(payment))
-  },[data])
+    if (tweetsQuery.isLoading) return <h1>Loading...</h1>;
+    if (tweetsQuery.isError)
+      return <pre>{JSON.stringify(tweetsQuery.error)}</pre>;
+  
   return (
+    
     <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={data} />
+      {tweetsQuery.data && <DataTable columns={columns} data={tweetsQuery.data}/>}
     </div>
   )
 }
+
