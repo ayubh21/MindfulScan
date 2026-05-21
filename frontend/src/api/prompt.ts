@@ -1,6 +1,6 @@
 import { FlagResponse } from "@/types/flagResponse";
 
-const PROMPT_ENDPOINT = "http://174.3.108.201:25566/api/prompt";
+const PROMPT_ENDPOINT = `${import.meta.env.VITE_BASE_URL}/api/prompt`;
 
 export async function getContentFlag(prompt: string) {
   const options = {

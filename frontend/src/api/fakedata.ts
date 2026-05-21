@@ -1,5 +1,6 @@
 import { Tweet } from "@/types/tweet";
-const FAKEDATA_ENDPOINT = "http://localhost:25566/api/fakedata";
+
+const FAKEDATA_ENDPOINT = `${import.meta.env.VITE_BASE_URL}/api/fakedata`;
 
 export async function getFakeData(pageNum: number): Promise<Tweet[]> {
   const response = await fetch(`${FAKEDATA_ENDPOINT}?page=${pageNum}`);
