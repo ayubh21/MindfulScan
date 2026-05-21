@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/table";
 import FlagInfo from "@/components/Flag";
 
-interface DataTableProps<TData, TValue> {
+interface DataTableProps<TData extends { id: string; tweet_uncensored: string }, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
@@ -32,7 +32,7 @@ interface DataTableProps<TData, TValue> {
 //   // Other properties...
 // };
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends { id: string; tweet_uncensored: string }, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
