@@ -1,15 +1,16 @@
-"Vitamin C cures the common cold.",misinformation
-"Humans only use 10% of their brains.",misinformation
-"The Earth is flat.",misinformation
-"Elvis Presley is still alive and lives secretly in Hawaii.",misinformation
-"Eating carrots improves your vision at night.",misinformation
-"Coffee is made from beans.",fact
-"Bats are blind.",misinformation
-"Lightning never strikes the same place twice.",misinformation
-"Goldfish have a 3-second memory span.",misinformation
-"There are five oceans on our planet.",fact
-"Dogs see in black and white.",misinformation
-"Vaccines cause autism.",misinformation
-"Drinking alcohol warms the body.",misinformation
-"The Great Pyramid of Giza is the only wonder of the ancient world still existing.",fact
-"Touching a toad can cause warts.",misinformation
+,count,hate_speech,offensive_language,neither,class,tweet
+,,,,,,Vitamin C cures the common cold.
+,,,,,,Humans only use 10% of their brains.
+,,,,,,The Earth is flat.
+,,,,,,Elvis Presley is still alive and lives secretly in Hawaii.
+,,,,,,Eating carrots improves your vision at night.
+,,,,,,Coffee is made from beans.
+,,,,,,Bats are blind.
+,,,,,,Lightning never strikes the same place twice.
+,,,,,,Goldfish have a 3-second memory span.
+,,,,,,There are five oceans on our planet.
+,,,,,,Dogs see in black and white.
+,,,,,,Vaccines cause autism.
+,,,,,,Drinking alcohol warms the body.
+,,,,,,The Great Pyramid of Giza is the only wonder of ancient world still existing.
+,,,,,,Touching a toad can cause warts.
