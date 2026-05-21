@@ -9,7 +9,6 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
-	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -20,10 +19,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = godotenv.Load()
-	if err != nil {
-		log.Fatal("error loading .env file")
-	}
+	// err = godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("error loading .env file")
+	// }
 
 	apiKey := os.Getenv("CHATGPT_API_KEY")
 	client := NewGptClient(apiKey)
